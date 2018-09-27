@@ -1,11 +1,12 @@
 class Movie < ActiveRecord::Base
+    # is this the right way to access things
     attr_accessor :title, :rating, :release_date
     def get_all_ratings
         #hi hello is this correct way to set up a hash
         ratingsCollect = Hash.new(0)
-        #get rating from each movie... how do in Ruby
+        #For each different rating... how do in Ruby
        ? .each do |movie|
-            ratingsCollect[movie.rating] =
+            ratingsCollect[movie.rating] = 
             end
             return ratingsCollect
        end
