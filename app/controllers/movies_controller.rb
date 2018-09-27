@@ -14,7 +14,8 @@ class MoviesController < ApplicationController
       order = params[:order]
       @all_ratings = Movie.get_all_ratings
       if params[:ratings].nil?
-          @movies = Movie.where(rating: @ratings)
+          @movies = Movie.all
+         # @movies = Movie.where(rating: @ratings)
       else
       @ratings = params[:ratings]
       keys = @ratings.keys
