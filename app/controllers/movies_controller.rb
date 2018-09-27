@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
       order = params[:order]
       @all_ratings = Movie.get_all_ratings
       @ratings = params[:ratings]
-      keys = ratings.keys
+      keys = @ratings.keys
       if order == "title"
           @movies = Movie.where({rating: keys}).order(:title)
       elsif  order == "release_date"
