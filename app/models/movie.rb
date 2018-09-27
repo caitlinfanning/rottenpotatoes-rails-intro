@@ -1,7 +1,7 @@
 class Movie < ActiveRecord::Base
     # is this the right way to access things
    # attr_accessor :title, :rating, :release_date
-    def get_all_ratings
+    def self.get_all_ratings
         ratingsCollect = ['G', 'PG', 'PG-13', 'R']
         #hi hello is this correct way to set up a hash
         #ratingsCollect = Hash.new(0)
@@ -13,5 +13,5 @@ class Movie < ActiveRecord::Base
           #  ratingsCollect[movie.rating] = 1
          #   end
             return ratingsCollect
-       end
+     end
 end
