@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
   def index
       order = params[:order]
       @all_ratings = Movie.get_all_ratings
-      ratings = params[:ratings]
+      @ratings = params[:ratings]
       keys = ratings.keys
       if order == "title"
           @movies = Movie.where({rating: keys}).order(:title)
