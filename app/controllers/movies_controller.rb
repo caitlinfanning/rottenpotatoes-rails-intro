@@ -19,6 +19,9 @@ class MoviesController < ApplicationController
       else
           @movies = Movie.all
       end
+      # expects the variable @all_ratings to be an enumerable collection of all 
+      # possible values of a movie rating
+      # @all_ratings = Movie.all_ratings
   end
 
   def new
