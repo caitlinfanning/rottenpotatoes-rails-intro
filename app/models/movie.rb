@@ -6,7 +6,10 @@ class Movie < ActiveRecord::Base
         ratingsCollect = Hash.new(0)
         #For each different rating... how do in Ruby
        ? .each do |movie|
-            ratingsCollect[movie.rating] = 
+           # whose values will be the value attribute of the checkbox (which is "1" 
+           # by default, since we didn't specify another value when calling the 
+           # check_box_tag helper
+            ratingsCollect[movie.rating] = 1
             end
             return ratingsCollect
        end

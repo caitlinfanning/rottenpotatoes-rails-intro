@@ -12,10 +12,6 @@ class MoviesController < ApplicationController
 
   def index
       order = params[:order]
-      # expects the variable @all_ratings to be an enumerable collection of all 
-      # possible values of a movie rating
-      # hash for key/value pairs?
-      #@all_ratings = Movie.get_all_ratings... ?
       if order == "title"
           @movies = Movie.order(:title)
       elsif  order == "release_date"
@@ -23,6 +19,16 @@ class MoviesController < ApplicationController
       else
           @movies = Movie.all
       end
+      # expects the variable @all_ratings to be an enumerable collection of all 
+      # possible values of a movie rating
+      # hash method for key/value pairs? for both all_ratings and ratings
+      #@all_ratings = Movie.get_all_ratings... ?
+      #@ratings = @ratings.
+      #Check if ratings/which rating boxes have been checked
+      #if ratings boxes have been checked
+      #do this
+      #else NO rating boxes have been checked
+      #ratings gets all ratings from  every movie/lists all the movies 
   end
 
   def new
