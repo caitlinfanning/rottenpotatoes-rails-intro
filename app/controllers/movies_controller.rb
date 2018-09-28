@@ -17,9 +17,9 @@ class MoviesController < ApplicationController
       #At this point keys is nil, which is confusing since the first time the user visits the site,
       #all the boxes should be checked
       #keys = @ratings.keys
-      if order == "title" && !@ratings.nil?
+      if order == "title" 
           @movies = Movie.where({rating: keys}).order(:title)
-      elsif  order == "release_date" && !@ratings.nil?
+      elsif  order == "release_date"
           @movies = Movie.where({rating: keys}).order(:release_date)
       else
           @movies = Movie.all
