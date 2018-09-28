@@ -21,11 +21,16 @@ class MoviesController < ApplicationController
       @ratings = params[:ratings]
       @sort_by = nil
       if @ratings != nil
-          ratings = @ratings.keys
+          session[:ratings] = @ratings
       else
-          @ratings = Hash[@all_ratings.collect { |item| [item, "1"] } ]
-          ratings = @ratings.keys
+          if session[:ratings].nil?
+              @ratings = Hash[@all_ratings.collect { |item| [item, "1"] } ]
+          else 
+              @ratings = session[:ratings]
+          end
       end
+      ratings = @ratings.keys
+      
       if order == "title" 
           @movies = Movie.where({rating: ratings}).order(:title)
           @sort_by = :sort_by_title
