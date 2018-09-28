@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
       order = params[:order]
       if order.nil?
           order = session[:order]
+          redirect_to movies_path(:order => session[:order])
       else 
           session[:order] = order
       end
@@ -27,7 +28,7 @@ class MoviesController < ApplicationController
               @ratings = Hash[@all_ratings.collect { |item| [item, "1"] } ]
           else 
               @ratings = session[:ratings]
-              redirect_to movies_path(params[:ratings] => @ratings) 
+              #redirect_to movies_path(params[:ratings] => @ratings) 
           end
       end
       ratings = @ratings.keys
