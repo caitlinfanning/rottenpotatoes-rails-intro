@@ -28,8 +28,8 @@ class MoviesController < ApplicationController
           @movies = Movie.where({rating: keys}).order(:release_date)
       else
           #@movies = Movie.all
-          @movies = Movie.where(rating: @ratings)
-          #@movies = Movie.where({rating: keys})
+          #@movies = Movie.where(rating: @ratings)
+          @movies = Movie.where({rating: keys})
       end 
   end
 
