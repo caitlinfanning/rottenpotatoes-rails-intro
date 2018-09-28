@@ -14,7 +14,11 @@ class MoviesController < ApplicationController
       order = params[:order]
       if order.nil?
           order = session[:order]
-          redirect_to movies_path(:order => session[:order])
+          if order.nil?
+              # hi
+          else
+              redirect_to movies_path(:order => session[:order])
+          end
       else 
           session[:order] = order
       end
