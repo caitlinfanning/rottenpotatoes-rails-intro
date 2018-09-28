@@ -23,13 +23,13 @@ class MoviesController < ApplicationController
           ratings = Movie.get_all_ratings
       end
       if order == "title" 
-          @movies = Movie.where({rating: keys}).order(:title)
+          @movies = Movie.where({rating: ratings}).order(:title)
       elsif  order == "release_date" 
-          @movies = Movie.where({rating: keys}).order(:release_date)
+          @movies = Movie.where({rating: ratings}).order(:release_date)
       else
-          #@movies = Movie.all
+          @movies = Movie.where({rating: ratings})
           #@movies = Movie.where(rating: @ratings)
-          @movies = Movie.where({rating: keys})
+          #@movies = Movie.where({rating: keys})
       end 
   end
 
