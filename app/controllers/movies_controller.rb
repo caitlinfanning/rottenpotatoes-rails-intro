@@ -39,12 +39,12 @@ class MoviesController < ApplicationController
       end
       ratings = @ratings.keys
           
-      if order_redirect && ratings_redirect
-           
-      elsif order_redirect 
-           redirect_to movies_path(:order => session[:order])
-      elsif ratings_redirect
-           redirect_to movies_path(:ratings => session[:ratings])
+      if order_redirect || ratings_redirect
+           redirect_to movies_path(:order => session[:order], :ratings => session[:ratings])
+      #elsif order_redirect 
+      #     redirect_to movies_path(:order => session[:order])
+      #elsif ratings_redirect
+      #     redirect_to movies_path(:ratings => session[:ratings])
       else 
       end
           
