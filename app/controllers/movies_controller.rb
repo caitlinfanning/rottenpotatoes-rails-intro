@@ -17,8 +17,7 @@ class MoviesController < ApplicationController
       @sort_by = nil
       if @ratings != nil
           ratings = @ratings.keys
-      else 
-          @ratings = Movie.get_all_ratings
+      else
           ratings = Movie.get_all_ratings
       end
       if order == "title" 
