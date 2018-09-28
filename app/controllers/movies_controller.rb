@@ -12,12 +12,13 @@ class MoviesController < ApplicationController
 
   def index
       order = params[:order]
+      order_redirect = false
       if order.nil?
           order = session[:order]
           if order.nil?
               # hi
           else
-              redirect_to movies_path(:order => session[:order])
+              order_redirect = true
           end
       else 
           session[:order] = order
@@ -25,6 +26,7 @@ class MoviesController < ApplicationController
       @all_ratings = Movie.get_all_ratings
       @ratings = params[:ratings]
       @sort_by = nil
+      ratings_redirect = false
       if @ratings != nil
           session[:ratings] = @ratings
       else
@@ -32,10 +34,20 @@ class MoviesController < ApplicationController
               @ratings = Hash[@all_ratings.collect { |item| [item, "1"] } ]
           else 
               @ratings = session[:ratings]
-              redirect_to movies_path(:ratings => session[:ratings])
+              ratings_redirect = true
           end
       end
       ratings = @ratings.keys
+          
+      if order_redirect && ratings_redirect
+           redirect_to movies_path(:order => session[:order], :ratings => session[:ratings])
+      elsif order_redirect 
+           redirect_to movies_path(:order => session[:order])
+      elsif ratings_redirect
+           redirect_to movies_path(:ratings => session[:ratings])
+      else 
+      end
+          
       
       if order == "title" 
           @movies = Movie.where({rating: ratings}).order(:title)
