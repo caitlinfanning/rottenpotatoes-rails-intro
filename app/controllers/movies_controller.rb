@@ -12,6 +12,11 @@ class MoviesController < ApplicationController
 
   def index
       order = params[:order]
+      if order.nil?
+          order = sessions[:order]
+      else 
+          sessions[:order] = order
+      end
       @all_ratings = Movie.get_all_ratings
       @ratings = params[:ratings]
       @sort_by = nil
