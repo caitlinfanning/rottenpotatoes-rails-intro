@@ -13,9 +13,9 @@ class MoviesController < ApplicationController
   def index
       order = params[:order]
       if order.nil?
-          order = sessions[:order]
+          order = session[:order]
       else 
-          sessions[:order] = order
+          session[:order] = order
       end
       @all_ratings = Movie.get_all_ratings
       @ratings = params[:ratings]
