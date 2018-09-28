@@ -10,10 +10,12 @@ class MoviesController < ApplicationController
     # will render app/views/movies/show.<extension> by default
   end
 
+   redirect_to movies_path(params[:order] => order) 
   def index
       order = params[:order]
       if order.nil?
           order = session[:order]
+          redirect_to movies_path(params[:order] => order) 
       else 
           session[:order] = order
       end
