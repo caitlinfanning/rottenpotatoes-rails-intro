@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
       if @ratings != nil
           ratings = @ratings.keys
       else
-          @ratings = Hash[@all_ratings.collect { |item| [item, "1"] } ]
+          @ratings = Hash[@all_ratings.collect { |item| [item, "0"] } ]
           ratings = @ratings.keys
       end
       if order == "title" 
