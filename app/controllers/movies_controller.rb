@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
           ratings = @ratings.keys
       else
           @ratings = Hash[@all_ratings.collect { |item| [item, "1"] } ]
-          ratings = Movie.get_all_ratings
+          ratings = @ratings.keys
       end
       if order == "title" 
           @movies = Movie.where({rating: ratings}).order(:title)
