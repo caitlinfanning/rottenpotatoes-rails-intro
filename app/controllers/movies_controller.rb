@@ -25,6 +25,7 @@ class MoviesController < ApplicationController
           @movies = Movie.where({rating: ratings}).order(:release_date)
       else
           @movies = Movie.where({rating: ratings})
+          #@movies = Movie.where({rating: ratings}).order()
       end 
   end
 
