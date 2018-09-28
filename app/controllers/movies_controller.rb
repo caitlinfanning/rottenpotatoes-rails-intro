@@ -14,13 +14,16 @@ class MoviesController < ApplicationController
       order = params[:order]
       @all_ratings = Movie.get_all_ratings
       @ratings = params[:ratings]
+      #At this point keys is nil, which is confusing since the first time the user visits the site,
+      #all the boxes should be checked
       #keys = @ratings.keys
       if order == "title" && !@ratings.nil?
           @movies = Movie.where({rating: keys}).order(:title)
       elsif  order == "release_date" && !@ratings.nil?
           @movies = Movie.where({rating: keys}).order(:release_date)
       else
-          @movies = Movie.where(rating: @ratings)
+          @movies = Movie.all
+          #@movies = Movie.where(rating: @ratings)
           #@movies = Movie.where({rating: keys})
       end 
   end
